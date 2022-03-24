@@ -1,4 +1,3 @@
-<?php 
-require_once realpath("vendor/autoload.php");
+<?php
 
-echo "Index file";
+model('logs')->where('id','1808204')->delete();
