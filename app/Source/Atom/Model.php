@@ -15,9 +15,12 @@ class Model{
         $this->tableName=$tableName;
     }
 
-    public function all()
+    public function all(array|string $columns="*")
     {
-        $sql="SELECT * FROM $this->tableName";
+        if(is_array($columns)){
+            $columns=implode(",",$columns);
+        }
+        $sql="SELECT $columns FROM $this->tableName";
         $statement = $this->connection->prepare($sql);
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_ASSOC); 
